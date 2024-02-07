@@ -39,6 +39,8 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
 } else if (url.indexOf("/user/my-center")) {
   if (obj?.data?.user_area?.base_info) {
     obj.data.user_area.base_info.year_vip_show = "1";
+    obj.data.user_area.base_info.vip_show_type = "40";
+    obj.data.user_area.base_info.is_vip = "1";
   }
 }
 
