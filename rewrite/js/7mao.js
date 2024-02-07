@@ -29,11 +29,11 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.params.ad_personal_switch = 0;
     obj.params.vip_status = 1;
   }
-} else if (url.indexOf("/init/other-data") != -1) {
+} else if (url.indexOf("/init/other-data0") != -1) {
   if (obj?.data?.main_activities) {
     obj.data.main_activities = null;
   }
-} else if (url.indexOf("/vip/index") != -1) {
+} else if (url.indexOf("/vip/index0") != -1) {
   if (obj?.data?.content.length > 0) {
     obj.data.content = []
   }
