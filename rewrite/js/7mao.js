@@ -36,6 +36,10 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.users.year_vip_show = "1";
     obj.data.users.isvip = "1";
   }
+} else if (url.indexOf("/user/my-center")) {
+  if (obj?.data?.user_area?.base_info) {
+    obj.data.user_area.base_info.year_vip_show = "1";
+  }
 }
 
 body = JSON.stringify(obj);
