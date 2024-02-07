@@ -51,7 +51,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   if (obj?.data?.func_area?.length > 0) {
     let newFuncs = [];
     for (let func of obj.data.func_area) {
-      if (["ads", "banner"]?.includes(func?.type)) {
+      if (["ads", "banner", "topic"]?.includes(func?.type)) {
         continue;
       } else {
         newFuncs.push(func);
