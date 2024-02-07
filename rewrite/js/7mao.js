@@ -14,19 +14,19 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     console.log("设置reader_top_banner为空");
   }
 } else if (url.indexOf("/splash/index") != -1) {
-  if (obj?.init?.is_show_ad) {
-    obj.init.is_show_ad = "0";
+  if (obj?.data?.init?.is_show_ad) {
+    obj.data.init.is_show_ad = "0";
   }
 
-  if (obj?.init?.voice_free_chapter_count) {
-    obj.init.voice_free_chapter_count = "999";
+  if (obj?.data?.init?.voice_free_chapter_count) {
+    obj.data.init.voice_free_chapter_count = "999";
   }
 
-  if (obj?.adv?.config) {
-    obj.adv.config.ad_format = "0";
-    obj.adv.config.auto_download_material = "0";
-    obj.adv.config.material_cache_time = 1;
-    obj.adv.config.popuplimit = 0;
+  if (obj?.data?.adv?.config) {
+    obj.data.adv.config.ad_format = "0";
+    obj.data.adv.config.auto_download_material = "0";
+    obj.data.adv.config.material_cache_time = 1;
+    obj.data.adv.config.popuplimit = 0;
   }
 
   if (obj?.params) {
