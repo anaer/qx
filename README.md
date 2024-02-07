@@ -40,3 +40,27 @@ IP-ASN规则: 当IP属于ASN号时, 执行该规则
 USER-AGENT规则: 当请求的User Agent匹配时, 执行该规则, 可使用通配符`*`与`?`
   在 iOS 15 系统后，系统出于隐私保护考虑，不再于 CONNECT 请求中提供 User-Agent，这意味着对于所有 HTTPS 请求，在未开启 MITM 时，User-Agent 均不可见且规则无法生效。
 FINAL规则: 在规则的末尾始终有一个FINAL类型规则兜底
+
+
+## 重写规则
+
+request-header
+request-body
+response-header
+response-body
+echo-response
+script-request-header
+script-request-body
+script-response-header
+script-response-body
+script-echo-response
+script-analyze-echo-response
+
+"reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
+"reject-200"    策略返回 HTTP 状态码 200,不附带任何额外内容
+"reject-img"    策略返回 HTTP 状态码 200,同时附带 1px gif
+"reject-dict"   策略返回 HTTP 状态码 200,同时附带一个空的 JSON 对象
+"reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
+
+## 相关链接
+https://github.com/crossutility/Quantumult-X
