@@ -39,10 +39,14 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.main_activities = null;
   }
 } else if (url.indexOf("/vip/index") != -1) {
+  if (obj?.data?.content) {
+    obj.data.content = []
+  }
+
   if (obj?.data?.users) {
     obj.data.users.isLifetimeVip = "1";
     obj.data.users.year_vip_show = "1";
-    obj.data.users.isVip = "1";
+    obj.data.users.isvip = "1";
   }
 }
 
