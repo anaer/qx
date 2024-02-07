@@ -42,6 +42,23 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.user_area.base_info.vip_show_type = "40";
     obj.data.user_area.base_info.is_vip = "1";
   }
+
+  // 我的页面
+  if (obj?.data?.user_area?.vip_info) {
+    // 开通会员卡片
+    obj.data.user_area.vip_info = {};
+  }
+  if (obj?.data?.func_area?.length > 0) {
+    let newFuncs = [];
+    for (let func of obj.data.func_area) {
+      if (["ads", "banner"]?.includes(func?.type)) {
+        continue;
+      } else {
+        newFuncs.push(func);
+      }
+    }
+    obj.data.func_area = newFuncs;
+  }
 }
 
 body = JSON.stringify(obj);
