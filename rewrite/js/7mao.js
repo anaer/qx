@@ -34,11 +34,11 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.params.ad_personal_switch = 0;
     obj.params.vip_status = 1;
   }
-} else if (url.indexOf("/init/other-data")) {
+} else if (url.indexOf("/init/other-data") != -1) {
   if (obj?.data?.main_activities) {
     obj.data.main_activities = null;
   }
-} else if (url.indexOf("/vip/index")) {
+} else if (url.indexOf("/vip/index") != -1) {
   if (obj?.data?.users) {
     obj.data.users.isLifetimeVip = "1";
     obj.data.users.year_vip_show = "1";
