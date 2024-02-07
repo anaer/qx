@@ -2,7 +2,7 @@ var url   = $request.url;
 var obj   = JSON.parse($response.body);
 
 if (url.indexOf('/reader-copy-paragraph-all.json') != -1) {
-	obj = {"data":{"vip_list":["测试2"], "list":["测试2"]}}
+	obj = {"data":{"vip_list":[], "list":[]}}
 } else if(url.indexOf('/api/v1/extra/init') != -1) {
 	if (obj?.data?.reader_floats?.length > 0) {
 		obj.data.reader_floats = [];
