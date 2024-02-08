@@ -67,6 +67,8 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   if (obj?.data?.is_vip) {
     obj.data.is_vip = "1";
   }
+  
+  obj.data.reader_background = [{"id" : "3", "name" : "大漠孤烟","expire_time" : "1808007993"}]
 }
 
 body = JSON.stringify(obj);
