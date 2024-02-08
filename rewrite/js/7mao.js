@@ -30,6 +30,10 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   if (obj?.data?.main_activities) {
     obj.data.main_activities = null;
   }
+} else if (url.indexOf("/api/v2/init") != -1) {
+  if (obj?.data?.reward_video_fail_num) {
+    obj.data.reward_video_fail_num = "0";
+  }
 } else if (url.indexOf("/vip/index") != -1) {
   if (obj?.data?.users) {
     obj.data.users.isLifetimeVip = "1";
