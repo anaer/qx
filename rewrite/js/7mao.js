@@ -63,6 +63,10 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     }
     obj.data.func_area = newFuncs;
   }
+} else if (url.indexOf("/user/get-user-info")) {
+  if (obj?.data?.is_vip) {
+    obj.data.is_vip = "1";
+  }
 }
 
 body = JSON.stringify(obj);
