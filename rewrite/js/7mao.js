@@ -13,6 +13,11 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.reader_top_banner = [];
     console.log("设置reader_top_banner为空");
   }
+  
+  if (obj?.data?.quit_pop_config?.quit_pop_switch) {
+    obj.data.quit_pop_config.quit_pop_switch = "0";
+  }
+  
 } else if (url.indexOf("/splash/index") != -1) {
   if (obj?.data?.init?.is_show_ad) {
     obj.data.init.is_show_ad = "0";
