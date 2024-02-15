@@ -71,6 +71,10 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   }
   
   obj.data.reader_background = [{"id" : "3", "name" : "大漠孤烟","expire_time" : "1808007993"}]
+} else if (url.indexOf("/chapter/chapter-list")) {
+  if (obj?.data?.auto_download) {
+    obj.data.auto_download = "1";
+  }
 }
 
 body = JSON.stringify(obj);
