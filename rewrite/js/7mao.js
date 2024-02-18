@@ -40,25 +40,32 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.reward_video_fail_num = "0";
   }
 } else if (url.indexOf("/vip/index") != -1) {
+  if (obj?.data?.activity) {
+    obj.data.activity = { "status" : "0", "pop_status" : "0", "id" : "0", "subtitle" : "", "title" : "", "pop_pic" : "", "button_pic" : "", "coupon_status" : "0" };
+  }
+
   if (obj?.data?.users) {
     obj.data.users.isLifetimeVip = "1";
+    obj.data.users.time = "1800000000";
     obj.data.users.year_vip_show = "1";
     obj.data.users.isvip = "1";
     obj.data.users.cycle_status = "1";
+    obj.data.users.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/16995203602522154.png";
   }
   obj.data.content = [];
-} else if (url.indexOf("/user/my-center")) {
+} else if (url.indexOf("/user/my-center")) { // 我的页面
+  // 开通会员卡片
+  if (obj?.data?.user_area?.vip_info) {
+    obj.data.user_area.vip_info = {};
+  }
+
   if (obj?.data?.user_area?.base_info) {
     obj.data.user_area.base_info.year_vip_show = "1";
+    obj.data.user_area.base_info.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/16995203602522154.png";
     obj.data.user_area.base_info.vip_show_type = "40";
     obj.data.user_area.base_info.is_vip = "1";
   }
 
-  // 我的页面
-  if (obj?.data?.user_area?.vip_info) {
-    // 开通会员卡片
-    obj.data.user_area.vip_info = {};
-  }
   if (obj?.data?.func_area?.length > 0) {
     let newFuncs = [];
     for (let func of obj.data.func_area) {
@@ -80,6 +87,13 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   if (obj?.data?.auto_download) {
     obj.data.auto_download = "1";
   }
+} else if (url.indexOf("/download/reader-background")) {
+  let newBackgournds = [];
+  for (let background of obj.data.backgrounds) {
+    background.v = "0";
+    newBackgournds.push(background);
+  }
+  obj.data.backgrounds = newBackgournds;
 }
 
 body = JSON.stringify(obj);
