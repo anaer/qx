@@ -89,3 +89,4 @@ https://github.com/crossutility/Quantumult-X
 待确认是否需要替换链接
 https://anaer.github.io/qx/rewrite/12306.conf
 https://cdn.jsdelivr.net/gh/anaer/qx@main/rewrite/12306.conf
+https://ghproxy.net/https://raw.githubusercontent.com/anaer/qx/main/rewrite/12306.conf
