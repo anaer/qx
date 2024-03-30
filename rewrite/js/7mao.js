@@ -19,16 +19,20 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   }
   
 } else if (url.indexOf("/splash/index") != -1) {
-  if (obj?.data?.init?.is_show_ad) {
+  if (obj?.data?.init) {
     obj.data.init.is_show_ad = "0";
+    obj.data.reward_upper_limit = "10";
+    obj.data.init.voice_free_chapter_count = "999";
   }
 
-  if (obj?.data?.adv?.config) {
-    obj.data.adv.config.auto_download_material = "0";
-    obj.data.adv.config.popuplimit = 1;
+  if (obj?.data?.adv) {
+    obj.data.adv = [];
   }
 
   if (obj?.params) {
+    obj.params.ad_unit_id = "";
+    obj.params.ad_program_switch  = 0;
+    obj.params.ad_personal_switch = 0;
     obj.params.vip_status = 1;
   }
 } else if (url.indexOf("/init/other-data") != -1) {
