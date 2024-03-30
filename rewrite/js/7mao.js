@@ -32,12 +32,16 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.params.vip_status = 1;
   }
 } else if (url.indexOf("/init/other-data") != -1) {
-  if (obj?.data?.main_activities) {
+  if (obj?.data) {
     obj.data.main_activities = null;
+    obj.data.default_paragraph_comment_switch = "0";
   }
 } else if (url.indexOf("/api/v2/init") != -1) {
-  if (obj?.data?.reward_video_fail_num) {
-    obj.data.reward_video_fail_num = "0";
+  if (obj?.data) {
+    obj.data.comment_switch = "0";
+    obj.data.chapter_comment_switch = "0";
+    obj.data.onekey_login_switch = "0";
+    obj.data.reward_video_fail_num = "-1";
   }
 } else if (url.indexOf("/vip/index") != -1) {
   if (obj?.data?.activity) {
