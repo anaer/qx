@@ -112,6 +112,19 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     newBackgournds.push(background);
   }
   obj.data.backgrounds = newBackgournds;
+} else if (url.indexOf("/vip/app/v1/index")) {
+  if (obj?.data) {
+    obj.data.content = [];
+  }
+
+  if (obj?.data?.users) {
+    obj.data.users.isLifetimeVip = "1";
+    obj.data.users.time = "1800000000";
+    obj.data.users.year_vip_show = "1";
+    obj.data.users.isvip = "1";
+    obj.data.users.cycle_status = "1";
+    obj.data.users.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/17085791857966659.png";
+  }
 }
 
 body = JSON.stringify(obj);
