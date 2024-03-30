@@ -64,7 +64,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.user_area.base_info.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/16995203602522154.png";
     obj.data.user_area.base_info.vip_show_type = "40";
     obj.data.user_area.base_info.is_vip = "1";
-    obj.data.user_area.base_info.level_text = "999";
+    obj.data.user_area.base_info.level_text = "50";
   }
 
   if (obj?.data?.func_area?.length > 0) {
@@ -85,8 +85,14 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
   if (obj?.data?.is_vip) {
     obj.data.is_vip = "1";
   }
-  
-  obj.data.reader_background = [{"id" : "3", "name" : "大漠孤烟","expire_time" : "1808007993"}]
+} else if (url.indexOf("/user/page")) {
+  if (obj?.data) {
+    obj.data.year_vip_show = "1";
+    obj.data.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/16995203602522154.png";
+    obj.data.is_vip = "1";
+    obj.data.level = "50";
+    obj.data.level_icon = "https://cdn.wtzw.com/bookimg/free/images/app/1_0_0/level/level_icon_50.png"
+  }
 } else if (url.indexOf("/chapter/chapter-list")) {
   if (obj?.data?.auto_download) {
     obj.data.auto_download = "1";
