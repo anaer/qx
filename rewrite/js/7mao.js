@@ -61,7 +61,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.users.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/17085791857966659.png";
   }
   obj.data.content = [];
-} else if (url.indexOf("/user/my-center")) { // 我的页面
+} else if (url.indexOf("/user/my-center") != -1) { // 我的页面
   // 开通会员卡片
   if (obj?.data?.user_area?.vip_info) {
     obj.data.user_area.vip_info = {};
@@ -89,11 +89,11 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     }
     obj.data.func_area = newFuncs;
   }
-} else if (url.indexOf("/user/get-user-info")) {
+} else if (url.indexOf("/user/get-user-info") != -1) {
   if (obj?.data?.is_vip) {
     obj.data.is_vip = "1";
   }
-} else if (url.indexOf("/user/page")) {
+} else if (url.indexOf("/user/page") != -1) {
   if (obj?.data) {
     obj.data.year_vip_show = "1";
     obj.data.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/17085791857966659.png";
@@ -101,18 +101,18 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.level = "50";
     obj.data.level_icon = "https://cdn.wtzw.com/bookimg/free/images/app/1_0_0/level/level_icon_50.png"
   }
-} else if (url.indexOf("/chapter/chapter-list")) {
+} else if (url.indexOf("/chapter/chapter-list") != -1) {
   if (obj?.data?.auto_download) {
     obj.data.auto_download = "1";
   }
-} else if (url.indexOf("/download/reader-background")) {
+} else if (url.indexOf("/download/reader-background") != -1) {
   let newBackgournds = [];
   for (let background of obj.data.backgrounds) {
     background.v = "0";
     newBackgournds.push(background);
   }
   obj.data.backgrounds = newBackgournds;
-} else if (url.indexOf("/vip/app/v1/index")) {
+} else if (url.indexOf("/vip/app/v1/index") != -1) {
   if (obj?.data) {
     obj.data.content = [];
   }
