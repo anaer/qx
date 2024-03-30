@@ -64,6 +64,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.user_area.base_info.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/16995203602522154.png";
     obj.data.user_area.base_info.vip_show_type = "40";
     obj.data.user_area.base_info.is_vip = "1";
+    obj.data.user_area.base_info.level_text = "999";
   }
 
   if (obj?.data?.func_area?.length > 0) {
@@ -72,6 +73,9 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
       if (["ads", "banner", "topic"]?.includes(func?.type)) {
         continue;
       } else {
+        if (func?.type == 'other') {
+          func.list = func.list.filter(item => ["person_comment", "download_manage", "setting"].includes(item.type));
+        } 
         newFuncs.push(func);
       }
     }
