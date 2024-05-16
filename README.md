@@ -10,15 +10,16 @@ https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Semporia.jso
 
 ## 规则配置说明
 
-```
-HOST,aaa.com,XXX
-HOST-KEYWORD,ccc,XXX
-HOST-SUFFIX,bbb.com,XXX
+```conf
+HOST,aaa.com,XXX                     # 域名匹配
+HOST-KEYWORD,ccc,XXX                 # 域名关键字匹配
+HOST-SUFFIX,bbb.com,XXX              # 域名后缀匹配
 HOST-WILDCARD,onedrive.*,Microsoft
 IP-ASN,211157,Telegram
-IP-CIDR,109.239.140.0/24,Telegram
-IP6-CIDR,2001:67c:4e8::/48,Telegram
-USER-AGENT,Spotify*,Spotify
+IP-CIDR,109.239.140.0/24,Telegram    # IP匹配
+IP6-CIDR,2001:67c:4e8::/48,Telegram  # IPV6匹配
+USER-AGENT,Spotify*,Spotify          # 用户代理匹配
+GEOIP,China,Telegram                 # IP数据库匹配
 ```
 
 ### 域名类型规则
@@ -80,6 +81,12 @@ script-analyze-echo-response
 ;^http://example\.com/resource9/ url script-request-header request-header.js
 ;^http://example\.com/resource10/ url script-request-body request-body.js
 ```
+
+## QX自带3种策略
+
+PROXY 代理
+DIRECT 直连
+REJECT 拒绝
 
 ## 相关链接
 https://github.com/crossutility/Quantumult-X
