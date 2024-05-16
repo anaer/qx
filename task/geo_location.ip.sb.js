@@ -1,11 +1,14 @@
  /***
   [task_local]
   event-interaction https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/geo_location.js, tag=GeoIP 查询, img-url=location.fill.viewfinder.system
+  
+  @XIAO_KOP
+
   **/
 
 // var content= `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: bold">` + response.body + `</p>`;
 
-var url = "http://realip.cc/"
+var url = "https://api.ip.sb/geoip"
 var opts = {
     policy: $environment.params
 };
@@ -16,15 +19,15 @@ var myRequest = {
 };
 
 var message = ""
-const paras = ["ip","isp","iso_code","city"]
+const paras = ["ip","isp","country_code","city"]
 const paran = ["IP","ISP","地区","城市"]
 $task.fetch(myRequest).then(response => {
   message = response? json2info(response.body,paras) : ""
-    $done({"title": "    🔎 REALIP 查询结果", "htmlMessage": message});
+    $done({"title": "    🔎 IP.SB 查询结果", "htmlMessage": message});
 }, reason => {
   message = "</br></br>🛑 查询超时"
   message = `<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: bold;">` + message + `</p>`
-    $done({"title": "🔎 REALIP 查询结果", "htmlMessage": message});
+    $done({"title": "🔎 IP.SB 查询结果", "htmlMessage": message});
 })
 
 
