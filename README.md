@@ -83,9 +83,3 @@ script-analyze-echo-response
 
 ## 相关链接
 https://github.com/crossutility/Quantumult-X
-
-
-## 临时
-待确认是否需要替换链接
-https://cdn.jsdelivr.net/gh/anaer/qx@main/rewrite/12306.conf
-https://ghproxy.net/https://raw.githubusercontent.com/anaer/qx/main/rewrite/12306.conf
