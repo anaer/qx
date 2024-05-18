@@ -127,6 +127,12 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.users.cycle_status = "1";
     obj.data.users.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/17085791857966659.png";
   }
+} else if (url.indexOf("/book/change") != -1) {
+  if (obj?.data) {
+    obj.data.recommend_books = [];
+    obj.data.recommend_book_id_list = [];
+    obj.data.book = {};
+  }
 }
 
 body = JSON.stringify(obj);
