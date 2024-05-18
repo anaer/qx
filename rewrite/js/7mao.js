@@ -92,6 +92,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
 } else if (url.indexOf("/user/get-user-info") != -1) {
   if (obj?.data?.is_vip) {
     obj.data.is_vip = "1";
+    obj.data.avatar_box = "https://cdn.wtzw.com/bookimg/free/png/17085791857966659.png";
   }
 } else if (url.indexOf("/user/page") != -1) {
   if (obj?.data) {
