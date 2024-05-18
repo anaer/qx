@@ -46,6 +46,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.chapter_comment_switch = "0";
     obj.data.onekey_login_switch = "0";
     obj.data.reward_video_fail_num = "-1";
+    obj.data.open_teeny_mode_alert = "0";
   }
 } else if (url.indexOf("/vip/index") != -1) {
   if (obj?.data?.activity) {
