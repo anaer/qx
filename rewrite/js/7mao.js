@@ -132,6 +132,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.recommend_books = [];
     obj.data.recommend_book_id_list = [];
     obj.data.book = {};
+    obj.data.is_recommend = "0";
   }
 }
 
