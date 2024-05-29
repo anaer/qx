@@ -5,9 +5,6 @@
 
 1. 依据QuantumultX.conf的配置分类创建目录
 
-## 图标仓库
-https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Semporia.json
-
 ## 规则配置说明
 
 ```conf
@@ -64,22 +61,24 @@ script-analyze-echo-response
 "reject-array"  策略返回 HTTP 状态码 200,同时附带一个空的 JSON 数组
 
 ```sh
-;^http://example\.com/resource1/1/ url reject
-;^http://example\.com/resource1/2/ url reject-img
-;^http://example\.com/resource1/3/ url reject-200
-;^http://example\.com/resource1/4/ url reject-dict
-;^http://example\.com/resource1/5/ url reject-array
-;^http://example\.com/resource2/ url 302 http://example.com/new-resource2/
-;^http://example\.com/resource3/ url 307 http://example.com/new-resource3/
-;^http://example\.com/resource4/ url request-header ^GET /resource4/ HTTP/1\.1(\r\n) request-header GET /api/ HTTP/1.1$1
-;^http://example\.com/resource4/ url request-header (\r\n)User-Agent:.+(\r\n) request-header $1User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36$2
-;^http://example\.com/resource5/ url request-body "info":\[.+\],"others" request-body "info":[],"others"
-;^http://example\.com/resource5/ url response-body "info":\[.+\],"others" response-body "info":[],"others"
-;^http://example\.com/resource6/ url script-response-body response-body.js
-;^http://example\.com/resource7/ url script-echo-response script-echo.js
-;^http://example\.com/resource8/ url script-response-header response-header.js
-;^http://example\.com/resource9/ url script-request-header request-header.js
-;^http://example\.com/resource10/ url script-request-body request-body.js
+^http://example\.com/resource1/1/ url reject
+^http://example\.com/resource1/2/ url reject-img
+^http://example\.com/resource1/3/ url reject-200
+^http://example\.com/resource1/4/ url reject-dict
+^http://example\.com/resource1/5/ url reject-array
+^http://example\.com/resource2/ url 302 http://example.com/new-resource2/
+^http://example\.com/resource3/ url 307 http://example.com/new-resource3/
+^http://example\.com/resource4/ url request-header ^GET /resource4/ HTTP/1\.1(\r\n) request-header GET /api/ HTTP/1.1$1
+^http://example\.com/resource4/ url request-header (\r\n)User-Agent:.+(\r\n) request-header $1User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36$2
+^http://example\.com/resource5/ url request-body "info":\[.+\],"others" request-body "info":[],"others"
+^http://example\.com/resource5/ url response-body "info":\[.+\],"others" response-body "info":[],"others"
+
+^http://example\.com/resource9/ url script-request-header request-header.js
+^http://example\.com/resource10/ url script-request-body request-body.js
+
+^http://example\.com/resource7/ url script-echo-response script-echo.js
+^http://example\.com/resource8/ url script-response-header response-header.js
+^http://example\.com/resource6/ url script-response-body response-body.js
 ```
 
 ## QX自带3种策略
