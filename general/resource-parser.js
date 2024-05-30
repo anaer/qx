@@ -1,5 +1,5 @@
 /** 
-☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-03-14 12:00⟧
+☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-05-30 12:52⟧
 ----------------------------------------------------------
 🛠 发现 𝐁𝐔𝐆 请反馈: https://t.me/Shawn_Parser_Bot
 ⛳️ 关注 🆃🅶 相关频道: https://t.me/QuanX_API
@@ -1536,7 +1536,7 @@ function ReplaceReg(cnt, para) {
 function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
   if (Pdbg) {$notify("subs", "node", subs)}
     var list0 = subs.split("\n");
-    var QuanXK = ["shadowsocks=", "trojan=", "vmess=", "http=","socks5="];
+    var QuanXK = ["shadowsocks=", "trojan=", "vmess=", "http=", "socks5=", "vless="];
     var SurgeK = ["=ss,", "=vmess,", "=trojan,", "=http,", "=https,", "=custom,", "=socks5", "=socks5-tls"];
     var LoonK = ["=shadowsocks", "=shadowsocksr", "=vless"]
     var QXlist = [];
@@ -1552,7 +1552,8 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
             const NodeCheck = (item) => listi.toLowerCase().indexOf(item) != -1;
             const NodeCheck1 = (item) => listi.toLowerCase().indexOf(item) == 0;
             try {
-              if (Pdbg) {$notify(i, type, list0[i])}
+              // 限制节点消息条数为20, 防止过多消息
+              if (Pdbg && i < 20) {$notify(i, type, list0[i])}
                 if (type == "vmess" && (list0[i].indexOf("remark=") == -1 && list0[i].indexOf("remarks=") == -1) && !/(obfs|alterId|type|\@)\=/.test(list0[i])) {
                     var bnode = Base64.decode(list0[i].split("vmess://")[1])
                     if (bnode.indexOf("over-tls=") == -1) { //v2rayN
@@ -3029,6 +3030,8 @@ function Clash2QX(cnt) {
         node = CSSR2QX(node)
       } else if (typecc == "vmess"){
         node = CV2QX(node)
+      } else if (typecc == "vless"){
+        node = CVL2QX(node)
       } else if (typecc == "trojan"){
         node = CT2QX(node)
       } else if (typecc == "http"){
@@ -3145,6 +3148,45 @@ function CV2QX(cnt) {
   node = "vmess="+[ipt, pwd, mtd, udp, tfo, obfs, ohost, ouri, cert, caead, tag].filter(Boolean).join(", ")
   //console.log(node)
   return node
+}
+
+//Clash vless type server
+function CVL2QX(cnt) {
+  tag = "tag=" + cnt.name.replace(/\\U.+?\s{1}/gi, " ");
+  ipt = cnt.server + ":" + cnt.port;
+  pwd = "password=" + cnt.uuid;
+  mtd = "method=none"; //cnt.cipher
+  udp = cnt.udp ? "udp-relay=false" : "udp-relay=false"; //暂不支持
+  tfo = cnt.tfo ? "fast-open=true" : "fast-open=false";
+  obfs = "";
+  if (cnt.network == "ws" && cnt.tls) {
+    obfs = "obfs=wss";
+  } else if (cnt.network == "ws") {
+    obfs = "obfs=ws";
+  } else if (cnt.network == "http") {
+    obfs = "obfs=http";
+  } else if (cnt.tls) {
+    obfs = "obfs=over-tls";
+  }
+  console.log(obfs);
+  const phost = getValue(() => cnt["ws-opts"]["headers"]["Host"]);
+  ohost = cnt["ws-headers"] ? "obfs-host=" + cnt["ws-headers"]["Host"] : "";
+  ohost = phost ? "obfs-host=" + phost : ohost;
+  //ohost= cnt["ws-opts"]? "obfs-host=" + cnt["ws-opts"]["headers"]["Host"] : ohost
+  ohost = cnt["servername"] ? "obfs-host=" + cnt["servername"] : ohost;
+  console.log(ohost);
+  ouri = cnt["ws-path"] ? "obfs-uri=" + cnt["ws-path"] : "";
+  ouri = cnt["ws-opts"] ? "obfs-uri=" + cnt["ws-opts"]["path"] : ouri;
+  cert = cnt["skip-cert-verify"] && cnt.tls ? "tls-verification=false" : "";
+  //$notify(cert)
+  if (Pcert0 == 1 && cnt.tls) {
+    cert = "tls-verification=true";
+  } else if (Pcert0 != 1 && cnt.tls) {
+    cert = "tls-verification=false";
+  }
+  node = "vless="+[ipt, pwd, mtd, udp, tfo, obfs, ohost, ouri, cert, tag].filter(Boolean).join(", ")
+  //console.log(node)
+  return node;
 }
 
 
