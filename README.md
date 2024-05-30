@@ -89,3 +89,5 @@ REJECT 拒绝
 
 ## 相关链接
 https://github.com/crossutility/Quantumult-X
+
+[非官方Quantumult X Wiki Book](https://qx.atlucky.me/)
