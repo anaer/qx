@@ -5553,7 +5553,7 @@ function CVL2QX(cnt) {
   tag = "tag=" + cnt.name.replace(/\\U.+?\s{1}/gi, " ");
   ipt = cnt.server + ":" + cnt.port;
   pwd = "password=" + cnt.uuid;
-  mtd = "method=" + "aes-128-gcm"; //cnt.cipher
+  mtd = "method=none"; //cnt.cipher
   udp = cnt.udp ? "udp-relay=false" : "udp-relay=false"; //暂不支持
   tfo = cnt.tfo ? "fast-open=true" : "fast-open=false";
   obfs = "";
@@ -5589,7 +5589,7 @@ function CVL2QX(cnt) {
     [ipt, pwd, mtd, obfs, cert, ohost, ouri, udp, tfo, tag]
       .filter(Boolean)
       .join(", ");
-  nvless.push(type + ip, pwd, mtd, obfs, pcert, thost, puri, pudp, ptfo, tag);
+  //nvless.push(type + ip, pwd, mtd, obfs, pcert, thost, puri, pudp, ptfo, tag);
   //console.log(node)
   return node;
 }
