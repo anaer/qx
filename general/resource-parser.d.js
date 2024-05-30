@@ -3052,7 +3052,11 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
           );
         } else if (type == "vless") {
           // version 150 support vless
-          node = VL2QX(list0[i], Pudp, Ptfo, Pcert0, PTls13);
+          if (node.indexOf("vless=") == -1) {
+            node = VL2QX(list0[i], Pudp, Ptfo, Pcert0, PTls13);
+          } else {
+            node = list0[i];
+          }
         } else if (QuanXK.some(NodeCheck1)) {
           node = QX_TLS(isQuanX(list0[i])[0], Pcert0, PTls13);
         } else if (SurgeK.some(NodeCheck)) {
