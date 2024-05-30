@@ -2938,7 +2938,7 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
     $notify("subs", "node", subs);
   }
   var list0 = subs.split("\n");
-  var QuanXK = ["shadowsocks=", "trojan=", "vmess=", "http=", "socks5="];
+  var QuanXK = ["shadowsocks=", "trojan=", "vmess=", "http=", "socks5=", "vless="];
   var SurgeK = [
     "=ss,",
     "=vmess,",
