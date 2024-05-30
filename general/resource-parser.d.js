@@ -2972,7 +2972,7 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
       const NodeCheck = (item) => listi.toLowerCase().indexOf(item) != -1;
       const NodeCheck1 = (item) => listi.toLowerCase().indexOf(item) == 0;
       try {
-        if (Pdbg) {
+        if (Pdbg && i < 20) {
           $notify(i, type, list0[i]);
         }
         if (
