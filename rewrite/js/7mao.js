@@ -117,6 +117,7 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
 } else if (url.indexOf("/vip/app/v1/index") != -1) {
   if (obj?.data) {
     obj.data.content = [];
+    obj.data.current_index = "";
   }
 
   if (obj?.data?.users) {
