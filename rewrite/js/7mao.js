@@ -134,6 +134,10 @@ if (url.indexOf("/reader-copy-paragraph-all.json") != -1) {
     obj.data.book = {};
     obj.data.is_recommend = "0";
   }
+} else if (url.indexOf("/book-store/reader-recommend") != -1) {
+  if (obj?.data) {
+    obj.data.books = [];
+  }
 }
 
 body = JSON.stringify(obj);
