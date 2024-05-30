@@ -5589,7 +5589,6 @@ function CVL2QX(cnt) {
     [ipt, pwd, mtd, obfs, cert, ohost, ouri, udp, tfo, tag]
       .filter(Boolean)
       .join(", ");
-  //nvless.push(type + ip, pwd, mtd, obfs, pcert, thost, puri, pudp, ptfo, tag);
   //console.log(node)
   return node;
 }
