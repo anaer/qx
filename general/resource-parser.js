@@ -1,5 +1,5 @@
 /** 
-☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-06-07 16:45⟧
+☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-06-07 17:33⟧
 ----------------------------------------------------------
 🛠 发现 𝐁𝐔𝐆 请反馈: https://t.me/Shawn_Parser_Bot
 ⛳️ 关注 🆃🅶 相关频道: https://t.me/QuanX_API
@@ -2986,6 +2986,8 @@ function YAMLFix(cnt){
   //console.log("part-fix:\n"+cnt.split("proxies:")[1])
   cnt = cnt.indexOf("proxies:") == -1? "proxies:\n" + cnt :"proxies:"+cnt.split("proxies:")[1]
   console.log("after-fix\n"+cnt)
+
+  cnt = cnt.replace(/(\s*)- (http\/1.1)/g, "$1  - $2")
   if(Pdbg == 1) {
   $notify("After-Fix","this is", "After-fix:\n"+cnt)}
   //$notify("After-Fix","this is", cnt)
