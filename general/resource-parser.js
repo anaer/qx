@@ -1,5 +1,5 @@
 /** 
-☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-06-07 17:33⟧
+☑️ 资源解析器 ©𝐒𝐡𝐚𝐰𝐧  ⟦2024-06-07 18:33⟧
 ----------------------------------------------------------
 🛠 发现 𝐁𝐔𝐆 请反馈: https://t.me/Shawn_Parser_Bot
 ⛳️ 关注 🆃🅶 相关频道: https://t.me/QuanX_API
@@ -3013,9 +3013,11 @@ function Clash2QX(cnt) {
   const yaml = new YAML()
   if (Pdbg==1) { $notify(" Before YAML Parse", "content", cnt)}
   var aa = JSON.stringify(yaml.parse(YAMLFix(cnt))).replace(/yaml@bug𝟙/g,"[").replace(/冒号/gmi,":").replace(/yaml@bug𝟚/g,"*")
+  if (Pdbg==1) { $notify("After YAML Parse0", "content", aa)}
   for (var i=0;i<10;i++) {
     aa = aa.replace(new RegExp(patn[4][i], "gmi"),patn[0][i])
   }
+  if (Pdbg==1) { $notify("After YAML Parse1", "content", aa)}
   var bb = JSON.parse(aa).proxies
   if (Pdbg==1) { $notify("After YAML Parse", "content", JSON.stringify(bb))}
   //console.log(bb)
