@@ -1552,8 +1552,8 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
             const NodeCheck = (item) => listi.toLowerCase().indexOf(item) != -1;
             const NodeCheck1 = (item) => listi.toLowerCase().indexOf(item) == 0;
             try {
-              // 限制节点消息条数为20, 防止过多消息
-              if (Pdbg && i < 20) {$notify(i, type, list0[i])}
+              // 限制节点消息条数, 防止过多消息
+              if (Pdbg && i < 3) {$notify(i, type, list0[i])}
                 if (type == "vmess" && (list0[i].indexOf("remark=") == -1 && list0[i].indexOf("remarks=") == -1) && !/(obfs|alterId|type|\@)\=/.test(list0[i])) {
                     var bnode = Base64.decode(list0[i].split("vmess://")[1])
                     if (bnode.indexOf("over-tls=") == -1) { //v2rayN
