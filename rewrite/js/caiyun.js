@@ -2,31 +2,43 @@
 彩云天气@wf021325[灰灰佬]
 真实VIP客户提取Token，仅用作备份，请引用原作者重写，如下链接
 https://raw.githubusercontent.com/wf021325/qx/master/js/caiyun.js
-
-https://biz.cyapi.cn/v2/user?app_name=weather
-https://biz.cyapi.cn/v1/visitors
-https://biz.cyapi.cn/v3/login_by_code 登录
-
-====================================
-[rewrite_local]
-^https:\/\/biz\.cyapi\.cn\/v\d\/(user\?app_name=weather|visitors|login_by_code)$ url script-response-body https://raw.githubusercontent.com/wf021325/qx/master/js/caiyun.js
-
-[mitm]
-hostname = biz.cyapi.cn
-====================================
-
- */
+*/
+var res   = {};
 var url   = $request.url;
 var obj   = JSON.parse($response.body);
-let Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoxLCJ1c2VyX2lkIjoiNWY1YmZjNTdkMmM2ODkwMDE0ZTI2YmI4Iiwic3ZpcF9leHBpcmVkX2F0IjoxNzA1MzMxMTY2LjQxNjc3MSwidmlwX2V4cGlyZWRfYXQiOjB9.h_Cem89QarTXxVX9Z_Wt-Mak6ZHAjAJqgv3hEY6wpps";
+let Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uIjoiNjYyNzQxMzVkYWM3MGMwMDE4YzFlNDBmIiwidXNlcl9pZCI6IjVmNWJmYzU3ZDJjNjg5MDAxNGUyNmJiOCIsInZlcnNpb24iOjIsImV4cCI6MTcyMTYyNDYyOSwidmlwX2V4cGlyZWRfYXQiOjAsImlzcyI6IndlYXRoZXIiLCJpYXQiOjE3MTM4NDg2MjksInN2aXBfZXhwaXJlZF9hdCI6MTg1NjY4NTAzMSwicHJpbWFyeSI6dHJ1ZX0.bBT3vbfATa-LF1G34j4VjPTYtwcKHfG3oHIkFlmg1dY";
+let userId = "5f5bfc57d2c6890014e26bb8";
 
-if (url.indexOf('/user') != -1 || url.indexOf('/visitors') != -1) {
+if (url.indexOf('/user') != -1) {
+	obj.result.token = Token;
+	obj.result.is_vip = !0;
+	obj.result.svip_expired_at = 3742732800;
+	obj.result.vip_type = "s";
+	body = JSON.stringify(obj);
+	res.body = body
+}
+
+if (url.indexOf('/visitors') != -1) {
 	obj.result.token = Token;
 	body = JSON.stringify(obj);
+	res.body = body
+}
+
+if (/v1\/(satellite|nafp\/origin_images)/g.test(url)) {
+    res.headers = $request.headers;
+    res.headers['device-token'] = Token;
+    res.headers['user-id'] = userId;
 }
 
 if (url.indexOf('/login_by_code') != -1) {
 	let obj = {"status":"ok","result":{"is_phone_verified":true,"token":Token},"rc":0}
 	body = JSON.stringify(obj);
+	res.body = body;
 }
-$done({body});
+
+if(url.includes('v1/activity')){
+	let body = $response.body
+	body = '{"status":"ok","activities":[{"items":[{}]}]}';
+	res.body = body;
+}
+$done(res);
