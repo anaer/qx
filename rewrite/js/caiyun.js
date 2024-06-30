@@ -11,9 +11,26 @@ let userId = "5f5bfc57d2c6890014e26bb8";
 
 if (url.indexOf('/user') != -1) {
 	obj.result.token = Token;
-	obj.result.is_vip = !0;
+	obj.result.is_vip = true;
+	obj.result.is_xy_vip = true;
 	obj.result.svip_expired_at = 3742732800;
 	obj.result.vip_type = "s";
+	body = JSON.stringify(obj);
+	res.body = body
+}
+
+if (url.indexOf('/vip_info') != -1) {
+	obj.vip.expires_time = "3742732800";
+	obj.vip.is_auto_renewal = false;
+
+	obj.trial_svip.received_time = "1719716064";
+	obj.trial_svip.expires_time = "3742732800";
+	obj.trial_svip.trial_card_code = "trial_svip_1d";
+	obj.trial_svip.is_recharge_vip = false;
+
+	obj.svip.expires_time = "3742732800";
+	obj.svip.is_auto_renewal = false;
+
 	body = JSON.stringify(obj);
 	res.body = body
 }
@@ -24,9 +41,15 @@ if (url.indexOf('/visitors') != -1) {
 	res.body = body
 }
 
-if (/v1\/(satellite|nafp\/origin_images)/g.test(url)) {
+if (/v1\/(satellite|nafp\/origin_images|radar)/g.test(url)) {
     res.headers = $request.headers;
     res.headers['device-token'] = Token;
+    res.headers['user-id'] = userId;
+}
+
+if (/\/subseasonnal/g.test(url)) {
+    res.headers = $request.headers;
+    res.headers['Authorization'] = "Bearer " + Token;
     res.headers['user-id'] = userId;
 }
 
