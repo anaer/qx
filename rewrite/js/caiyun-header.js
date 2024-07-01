@@ -3,16 +3,8 @@ let Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uIjoiNjYyNzQxMzVkYW
 let userId = "5f5bfc57d2c6890014e26bb8";
 
 res.headers = $request.headers;
-if (res.headers['Authorization']){
-	res.headers['Authorization'] = "Bearer " + Token;
-}
-
-if (res.headers['device-token']){
-	res.headers['device-token'] = Token;
-}
-
-if (res.headers['user-id']){
-	res.headers['user-id'] = userId;
-}
+res.headers['Authorization'] = "Bearer " + Token;
+res.headers['device-token'] = Token;
+res.headers['user-id'] = userId;
 
 $done(res);
