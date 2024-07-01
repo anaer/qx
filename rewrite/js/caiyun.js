@@ -47,7 +47,7 @@ if (/v1\/(satellite|nafp\/origin_images|radar)/g.test(url)) {
     res.headers['user-id'] = userId;
 }
 
-if (/\/subseasonnal/g.test(url)) {
+if (/\/subseasonal/g.test(url)) {
     res.headers = $request.headers;
     res.headers['Authorization'] = "Bearer " + Token;
     res.headers['user-id'] = userId;
