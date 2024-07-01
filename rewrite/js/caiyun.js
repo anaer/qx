@@ -64,4 +64,17 @@ if(url.includes('v1/activity')){
 	body = '{"status":"ok","activities":[{"items":[{}]}]}';
 	res.body = body;
 }
+
+res.headers = $request.headers;
+if (res.headers['Authorization']){
+	res.headers['Authorization'] = "Bearer " + Token;
+}
+
+if (res.headers['device-token']){
+	res.headers['device-token'] = Token;
+}
+
+if (res.headers['user-id']){
+	res.headers['user-id'] = userId;
+}
 $done(res);
