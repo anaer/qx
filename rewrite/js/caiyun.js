@@ -47,34 +47,30 @@ if (/v1\/(satellite|nafp\/origin_images|radar)/g.test(url)) {
     res.headers['user-id'] = userId;
 }
 
-if (/\/subseasonal/g.test(url)) {
-    res.headers = $request.headers;
-    res.headers['Authorization'] = "Bearer " + Token;
-    res.headers['user-id'] = userId;
-}
-
 if (url.indexOf('/login_by_code') != -1) {
 	let obj = {"status":"ok","result":{"is_phone_verified":true,"token":Token},"rc":0}
 	body = JSON.stringify(obj);
 	res.body = body;
 }
 
-if(url.includes('v1/activity')){
+if(url.includes('v1/activity') != -1) {
 	let body = $response.body
 	body = '{"status":"ok","activities":[{"items":[{}]}]}';
 	res.body = body;
 }
 
-res.headers = $request.headers;
-if (res.headers['Authorization']){
-	res.headers['Authorization'] = "Bearer " + Token;
-}
+if (url.includes('starplucker.cyapi.cn') != -1) {
+	res.headers = $request.headers;
+	if (res.headers['Authorization']){
+		res.headers['Authorization'] = "Bearer " + Token;
+	}
 
-if (res.headers['device-token']){
-	res.headers['device-token'] = Token;
-}
+	if (res.headers['device-token']){
+		res.headers['device-token'] = Token;
+	}
 
-if (res.headers['user-id']){
-	res.headers['user-id'] = userId;
+	if (res.headers['user-id']){
+		res.headers['user-id'] = userId;
+	}
 }
 $done(res);
