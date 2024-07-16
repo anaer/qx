@@ -38,7 +38,7 @@ if (url.indexOf("/vip_info") != -1) {
 }
 
 if (url.includes("v1/activity") != -1) {
-  obj.a = 1
+  obj.a = url
   // 隐藏彩云AI
   if (url.includes("&type_id=A03&") != -1) {
     obj.b = 2
