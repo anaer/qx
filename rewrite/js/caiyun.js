@@ -38,10 +38,8 @@ if (url.indexOf("/vip_info") != -1) {
 }
 
 if (url.indexOf("v1/activity") != -1) {
-  obj.a = url
   // 隐藏彩云AI
   if (url.indexOf("&type_id=A03&") != -1) {
-    obj.b = 2
     if (obj?.interval) {
       obj.interval = 2592000; // 30天===2592000秒
     }
@@ -56,9 +54,7 @@ if (url.indexOf("v1/activity") != -1) {
       obj.activities = newActs;
     }
   } else {
-    obj.b=1
     if (obj?.activities?.length > 0){
-      obj.c=1
       obj.activities = [];
     }
   }
