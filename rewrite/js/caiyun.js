@@ -39,7 +39,7 @@ if (url.indexOf("/vip_info") != -1) {
 
 if (url.includes("v1/activity") != -1) {
   // 彩云推广
-  if (["&type_id=A03&"]?.includes(url)) {
+  if (url.includes("&type_id=A03&") != -1) {
     // 彩云AI
     if (obj?.interval) {
       obj.interval = 2592000; // 30天===2592000秒
@@ -47,10 +47,8 @@ if (url.includes("v1/activity") != -1) {
     if (obj?.activities?.length > 0) {
       let newActs = [];
       for (let item of obj.activities) {
-        if (item?.type === "tabbar" && item?.feature) {
+        if (item?.feature) {
           item.feature = false;
-        } else {
-          continue;
         }
         newActs.push(item);
       }
@@ -62,23 +60,7 @@ if (url.includes("v1/activity") != -1) {
       status: "ok",
       interval: 2592000,
       id: "1",
-      activities: [
-        {
-          items: [
-            {
-              text: "",
-              image_light: "",
-              link: "",
-              activity_name: "",
-              id: "1",
-              image_dark: "",
-            },
-          ],
-          type: "activity_icon",
-          name: "",
-          carousel: "5000",
-        },
-      ],
+      activities: [],
     };
   }
 }
