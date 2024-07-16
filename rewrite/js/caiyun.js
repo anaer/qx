@@ -56,7 +56,8 @@ if (url.includes("v1/activity") != -1) {
     }
   } else {
     if (obj?.activities?.length > 0){
-      obj.activities = []
+      let emptyActs = [];
+      obj.activities = emptyActs;
     }
   }
 }
