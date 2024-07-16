@@ -55,13 +55,9 @@ if (url.includes("v1/activity") != -1) {
       obj.activities = newActs;
     }
   } else {
-    // 其他请求
-    obj = {
-      status: "ok",
-      interval: 2592000,
-      id: "1",
-      activities: [],
-    };
+    if (obj?.activities?.length > 0){
+      obj.activities = []
+    }
   }
 }
 
