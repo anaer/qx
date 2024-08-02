@@ -60,5 +60,35 @@ if (url.indexOf("v1/activity") != -1) {
   }
 }
 
+if (url.indexOf("/operation/homefeatures") != -1) {
+    obj.data = [];
+}
+
+if (url.indexOf("/operation/feeds") != -1) {
+    obj.data = obj.data.filter(
+      (e) => -1!= e.category_times_text.indexOf("人查看")
+    );
+}
+
+if (url.indexOf("/operation/features") != -1) {
+    obj.data = obj.data.filter((e) => -1 != e.url.indexOf("cy://"));
+}
+
+if (url.indexOf("/operation/banners") != -1) {
+    obj.data = [
+      {
+        avatar:
+          "https://cdn-w.caiyunapp.com/p/app/operation/prod/banner/668502d5c3a2362582a2a5da/d9f198473e7f387d13ea892719959ddb.jpg",
+        url: "https://cdn-w.caiyunapp.com/p/app/operation/prod/article/66850143c3a2362582a2a5d9/index.html",
+        title: "暴雨来袭，这些避险“秘籍”你学会了吗？",
+        banner_type: "article",
+      },
+    ]
+}
+
+if (url.indexOf("/campaigns") != -1) {
+  obj.campaigns = []
+}
+
 body = JSON.stringify(obj);
 $done({ body });
