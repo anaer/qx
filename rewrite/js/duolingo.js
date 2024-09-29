@@ -14,6 +14,7 @@ if (isCheckUrl(url)) {
                 .replace(/expectedExpiration\\":\s*(\d+)/g, 'expectedExpiration\\":4103004800')
                 .replace(/isFreeTrialPeriod\\":\s*\w+/g, 'isFreeTrialPeriod\\":false')
                 .replace(/plusStatus\\":\s*\\"\w+/g, 'plusStatus\\":\\"PLUS')
+                .replace(/subscriberLevel\\":\s*\\"\w+/g, 'subscriberLevel\\":\\"PREMIUM')
                 .replace(/\\"timerBoosts\\":\s*(\d+)/g, '\\"timerBoosts\\":99')
                 .replace(/\\"timezone\\":\s*\\"[^\\"]+/g, '\\"timezone\\":\\"Asia/Taipei')
                 .replace(/\\"utc_offset\\":\s*[^,]+/g, '\\"utc_offset\\":8.0');
