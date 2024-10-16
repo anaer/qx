@@ -126,6 +126,9 @@ if (url.includes("nbfriend.message.conversation.list")) {
   if (obj?.data?.data?.length > 0) {
     obj.data.data = obj.data.data.filter((i) => i?.conversationId?.includes("logistic_message"));
   }
+} else if (url.includes("mtop.cainiao.app.mine.main.cn")) {
+  let a = ["banner", "activity", "asset"];
+  for (let d of a) obj.data?.[d] && delete obj.data[d];
 } else if (url.includes("nbpresentation.pickup.empty.page.get")) {
   // 取件页面
   if (obj?.data?.result) {
