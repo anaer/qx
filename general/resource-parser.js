@@ -3839,6 +3839,9 @@ function YAML() {
         }
 
         function semanticAnalysis(blocks) {
+                if (!blocks || !blocks.children || blocks.children.length === 0) {
+                  return {};
+                }
                 var res = processBlock(blocks.children);
                 return res;
         }
