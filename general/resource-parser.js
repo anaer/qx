@@ -3018,13 +3018,13 @@ function Clash2QX(cnt) {
   } catch (error) {
     $notify("JSON stringify error", "content", error)
   }
-  if (Pdbg==1) { $notify("After YAML Parse0", "content", aa)}
+  // if (Pdbg==1) { $notify("After YAML Parse0", "content", aa)}
   for (var i=0;i<10;i++) {
     aa = aa.replace(new RegExp(patn[4][i], "gmi"),patn[0][i])
   }
-  if (Pdbg==1) { $notify("After YAML Parse1", "content", aa)}
+  // if (Pdbg==1) { $notify("After YAML Parse1", "content", aa)}
   var bb = JSON.parse(aa).proxies
-  if (Pdbg==1) { $notify("After YAML Parse", "content", JSON.stringify(bb))}
+  // if (Pdbg==1) { $notify("After YAML Parse", "content", JSON.stringify(bb))}
   //console.log(bb)
   var nl = bb.length
   var nodelist=[]
@@ -3880,6 +3880,7 @@ function YAML() {
                 var res = semanticAnalysis(doc);
                 processing_time = (new Date()).getTime() - processing_time;
 
+                $notify("JSON parse error", "content", errors.join("\n"));
                 return res;
         }
 
