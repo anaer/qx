@@ -3880,7 +3880,9 @@ function YAML() {
                 var res = semanticAnalysis(doc);
                 processing_time = (new Date()).getTime() - processing_time;
 
-                $notify("JSON parse error", "content", errors.join("\n"));
+                if (errors.length > 0) {
+                  $notify("JSON parse error", "content", errors.join("\n"));
+                }
                 return res;
         }
 
