@@ -1,8 +1,8 @@
-DOMAIN-SUFFIX,redd.it
-DOMAIN-SUFFIX,reddit.com
-DOMAIN-SUFFIX,redditmail.com
-DOMAIN-SUFFIX,redditmedia.com
-DOMAIN-SUFFIX,redditstatic.com
-DOMAIN-SUFFIX,reddituploads.com
-DOMAIN-SUFFIX,reddituploads.com.cdn-cf.behance.net
-DOMAIN-SUFFIX,reddituploads.com.cdn-cf.dropbox.com
+HOST-SUFFIX,redd.it
+HOST-SUFFIX,reddit.com
+HOST-SUFFIX,redditmail.com
+HOST-SUFFIX,redditmedia.com
+HOST-SUFFIX,redditstatic.com
+HOST-SUFFIX,reddituploads.com
+HOST-SUFFIX,reddituploads.com.cdn-cf.behance.net
+HOST-SUFFIX,reddituploads.com.cdn-cf.dropbox.com

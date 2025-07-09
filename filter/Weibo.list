@@ -1,4 +1,4 @@
-DOMAIN-SUFFIX,weibo.cn
-DOMAIN-SUFFIX,weibo.com
-DOMAIN-SUFFIX,weibocdn.com
-DOMAIN-KEYWORD,weibo
+HOST-SUFFIX,weibo.cn
+HOST-SUFFIX,weibo.com
+HOST-SUFFIX,weibocdn.com
+HOST-KEYWORD,weibo
