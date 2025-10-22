@@ -96,3 +96,6 @@ https://github.com/crossutility/Quantumult-X
 ## GEOIP
 
 https://github.com/Hackl0us/GeoIP2-CN/raw/release/Country.mmdb
+
+## 规则来源
+https://github.com/fmz200/wool_scripts/blob/main/QuantumultX/rewrite/rewrite.snippet
