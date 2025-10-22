@@ -37,6 +37,10 @@ if (url.indexOf("/api/alexa/homepage/hub") != -1) {
     obj.data.goods_list = [];
     obj.data.has_more = false;
   }
+} else if (url.indexOf("/shipping") != -1) {
+  if (obj?.data) {
+    obj.data.shipping.banner_above_recommend = [];
+  }
 }
 
 body = JSON.stringify(obj);
