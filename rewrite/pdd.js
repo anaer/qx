@@ -31,6 +31,10 @@ if (url.indexOf("/api/alexa/homepage/hub") != -1) {
     obj.result.search_bar_hot_query.items = [];
     obj.result.search_bar_hot_query.shade = {};
   }
+
+  if (obj?.result?.template_ext) {
+    obj.result.template_ext.is_show_mc = false;
+  }
 } else if (url.indexOf("/api/caterham/v3/query/new_chat_group") != -1) {
   // 聊天页
   if (obj?.data) {
