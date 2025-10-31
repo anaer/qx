@@ -90,6 +90,46 @@ switch (isResp) {
       console.log(`淘宝-开屏活动, 出现异常: ` + err);
     }
     break;
+
+  case /^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow/.test(url):
+      // 首页
+    try {
+      if (obj?.data) {
+        const items = [
+          "10", // 物流详情页 底部横图
+          "498", // 物流详情页 左上角
+          "328", // 3位数为家乡版本
+          "366",
+          "369",
+          "615",
+          "616",
+          "727",
+          "793", // 支付宝 小程序 搜索框
+          "954", // 支付宝 小程序 置顶图标
+          "1275", // 果酱即将到期
+          "1308", // 支付宝 小程序 横图
+          "1316", // 头部 banner
+          "1332", // 我的页面 横图
+          "1340", // 查快递 小妙招
+          "1391", // 支付宝 小程序 寄包裹
+          "1410", // 导入拼多多、抖音快递
+          "1428", // 幸运号
+          "1524", // 抽现金
+          "1525", // 幸运包裹
+          "1638", // 为你精选了一些商品
+          "1910" // 618促销红包
+        ];
+        for (let i of items) {
+          if (obj.data?.[i]) {
+            delete obj.data[i];
+          }
+        }
+      }
+      body = JSON.stringify(obj);
+    } catch (err) {
+      console.log(`淘宝-开屏活动, 出现异常: ` + err);
+    }
+    break;
   default:
     $done({});
 }
