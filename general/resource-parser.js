@@ -3805,7 +3805,7 @@ function YAML() {
                                         isMap = true;
                                         continue;
                                 } else if(m = line.match(/^-\s*(.*)/)) {
-                                        if(currentObj != null)
+                                        if(currentObj != null && Array.isArray(currentObj))
                                                 currentObj.push(processValue(m[1]));
                                         else {
                                                 if (isMap) {
