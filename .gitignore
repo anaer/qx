@@ -1,1 +1,11 @@
 .vscode/
+# OS files
+*.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Dev
+node_modules/
+*.log

@@ -4,6 +4,8 @@
 ## 目录结构说明
 
 1. 依据QuantumultX.conf的配置分类创建目录
+2. docs/adr/ — 架构决策记录
+3. docs/glossary/ — 术语表
 
 ## 规则配置说明
 
