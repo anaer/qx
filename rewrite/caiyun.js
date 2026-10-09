@@ -66,9 +66,9 @@ try {
   }
 
   if (url.indexOf("/operation/feeds") != -1) {
-      obj.data = obj.data.filter(
-        (e) => -1!= e.category_times_text.indexOf("人查看")
-      );
+      if (Array.isArray(obj?.data)) {
+        obj.data = obj.data.filter(e => (e?.category_times_text || "").indexOf("人查看") != -1);
+      }
   }
 
   if (url.indexOf("/operation/features") != -1) {

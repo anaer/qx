@@ -6,75 +6,7 @@ try {
   if (!$response.body) { $done({}); } else {
     let obj = JSON.parse($response.body);
 
-    if (url.includes("nbfriend.message.conversation.list")) {
-      if (obj.data.data) {
-        obj.data.data = obj.data.data.filter((i) => i?.conversationId?.includes("logistic_message"));
-      }
-    } else if (url.includes("nbpresentation.pickup.empty.page.get")) {
-      // 取件页面
-      if (obj.data.result) {
-        let ggContent = obj.data.result.content;
-        if (ggContent.middle) {
-          ggContent.middle = ggContent.middle.filter(
-            (i) =>
-              ![
-                "guoguo_pickup_empty_page_relation_add", // 添加亲友
-                "guoguo_pickup_helper_feedback", // 反馈组件
-                "guoguo_pickup_helper_tip_view" // 取件小助手
-              ]?.includes(i.template.name)
-          );
-        }
-      }
-    } else if (url.includes("nbpresentation.protocol.homepage.get")) {
-      // 首页
-      if (obj.data.result) {
-        let res = obj.data.result;
-        if (res.dataList) {
-          res.dataList = res.dataList.filter((i) => {
-            if (i?.type?.includes("kingkong")) {
-              if (i.bizData.items) {
-                for (let ii of i.bizData.items) {
-                  ii.rightIcon = null;
-                  ii.bubbleText = null;
-                }
-                return true;
-              }
-            } else if (i?.type?.includes("icons_scroll")) {
-              // 顶部图标
-              if (i.bizData.items) {
-                const item = [
-                  "618cjhb", // 超级红包
-                  "bgxq", // 包裹星球
-                  "cncy", // 填字赚现金
-                  "cngy", // 免费领水果
-                  "cngreen", // 绿色家园
-                  "cnhs", // 菜鸟回收
-                  "gjjf", // 裹酱积分
-                  "jkymd", // 集卡赢免单
-                  "ljjq", // 领寄件券
-                  "ttlhb", // 天天领红包
-                  "xybg" // 幸运包裹
-                ];
-                i.bizData.items = i.bizData.items.filter((ii) => !item?.includes(ii.key));
-                for (let ii of i.bizData.items) {
-                  ii.rightIcon = null;
-                  ii.bubbleText = null;
-                }
-                return true;
-              }
-            } else if (i?.type?.includes("banner_area")) {
-              // 新人福利 幸运抽奖
-              return false;
-            } else if (i?.type?.includes("promotion")) {
-              // 促销活动
-              return false;
-            } else {
-              return true;
-            }
-          });
-        }
-      }
-    } else if (url.includes("guoguo.nbnetflow.ads.show")) {
+    if (url.includes("guoguo.nbnetflow.ads.show")) {
       // 我的页面
       if (obj?.data?.result?.length > 0) {
         // 29338 寄件会员

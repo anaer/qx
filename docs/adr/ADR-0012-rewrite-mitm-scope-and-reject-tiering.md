@@ -1,9 +1,9 @@
 # ADR-0012: 重写模块的 MITM 面与阻断动作分级
 
-**状态：** 提议中
+**状态：** 已接受
 **创建时间：** 2026-10-08
 
-> 当前状态 / 核心结论：七猫闪退排查确认了 rewrite 模块的三条隐式约定——MITM 面由 `hostname` 单独决定、宽正则的实际范围被 `hostname` 限定、阻断动作按响应类型分级；已在 `rewrite/7mao.conf`、`rewrite/7mao.js` 落地，其余模块待按此对齐。
+> 当前状态 / 核心结论：五条写法约定已在 `rewrite/` 全量落地（七猫/叮咚/高德/菜鸟/夸克/spotify/喜马拉雅等模块），待对齐项已清空；剩余动作只有推送后在 QX 内更新资源做真机验证，语义层面的未证实项由 ADR-0013 承载。
 
 ## 背景
 
@@ -29,12 +29,13 @@
 ## 实施位置
 
 - 已落地：`rewrite/7mao.conf#hostname`、`rewrite/7mao.conf#api-ks.wtzw.com`、`rewrite/7mao.conf` 的规则顺序（阻断组 → 具体改写组 → 宽正则兜底）、`rewrite/7mao.js`（IIFE 单出口 + 非 JSON 放行）、`rewrite/dingdong.conf` 的 `(?>...)` 原子分组改为普通捕获分组、`rewrite/spotify.conf#hostname`（补 `*spclient.spotify.com`，使正则面与 MITM 面对齐，头部失效引用改指向上游可达地址）、`rewrite/` 下 21 个含 `JSON.parse` 的响应脚本整体加 try 兜底，其中 8 个的判空守卫改为互斥分支
-、`rewrite/ximalaya.conf#hostname`（`*.xima*.*` 跨级通配换成 `*.ximalaya.com, *.xmcdn.com`，24 条规则逐条复测仍可命中；旧写法会额外解密 `ximaplay.org`、`ximalaya.com.evil.net` 这类仿冒域）
+、`rewrite/spotify-proto.js`（脚本段整体 try，深链缺失与方法不匹配分支改为透传原响应体）、`rewrite/quark.js`（路径遍历支持 `a[b]` 下标，数组用 splice 避免 null 空洞）、`rewrite/ximalaya.conf#hostname`（`*.xima*.*` 跨级通配换成 `*.ximalaya.com, *.xmcdn.com`，24 条规则逐条复测仍可命中；旧写法会额外解密 `ximaplay.org`、`ximalaya.com.evil.net` 这类仿冒域）
 - 待对齐：无
 
 ## 关联文档
 
 - [ADR-0004: 重写模块组织](ADR-0004-rewrite-module-organization.md) —— 本 ADR 约束同一批模块文件内部的启用边界
+- [ADR-0013: QX 运行时语义假设与保守落地](ADR-0013-qx-runtime-assumptions.md) —— 本 ADR 的单出口与顺序约定建立在该 ADR 记录的语义假设之上
 
 ## 下一步
 

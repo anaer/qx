@@ -44,11 +44,19 @@ try {
         var parts = path.split('.');
         var current = json;
         for (var i = 0; i < parts.length; i++) {
+            if (!current) break;
+            var seg = parts[i].match(/^([^\[]+)(?:\[(\d+)\])?$/);
+            if (!seg) break;
+            var key = seg[1], idx = seg[2];
             if (i === parts.length - 1) {
-                delete current[parts[i]];
+                if (idx === undefined) {
+                    if (Array.isArray(current)) { current.splice(Number(key), 1); } else { delete current[key]; }
+                } else if (current[key]) {
+                    if (Array.isArray(current[key])) { current[key].splice(Number(idx), 1); } else { delete current[key][idx]; }
+                }
             } else {
-                current = current[parts[i]];
-                if (!current) break;
+                current = current[key];
+                if (idx !== undefined) { current = current ? current[idx] : undefined; }
             }
         }
     });
