@@ -36,6 +36,7 @@
 
 - [ADR-0004: 重写模块组织](ADR-0004-rewrite-module-organization.md) —— 本 ADR 约束同一批模块文件内部的启用边界
 - [ADR-0013: QX 运行时语义假设与保守落地](ADR-0013-qx-runtime-assumptions.md) —— 本 ADR 的单出口与顺序约定建立在该 ADR 记录的语义假设之上
+- [ADR-0014: 咪咕音乐开屏阻断与 listen-url 降级集成](ADR-0014-migu-splash-and-listen-url.md) —— 本 ADR 的顺序即优先级与 reject 分级在该次集成中的应用
 
 ## 下一步
 

@@ -38,7 +38,7 @@ else if ($request?.url?.includes("user/api/my-page-header/")) {
   }
 }
 
-else if ($request?.url?.includes("/column/startup-pic-with-ad")) {
+else if ($request?.url?.includes("/column/startup") || $request?.url?.includes("/column/start-up")) {
   try {
     let obj = JSON.parse($response.body);
     delete obj.data;
