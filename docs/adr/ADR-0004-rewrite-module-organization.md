@@ -31,3 +31,7 @@ rewrite/
 - 新增 APP 支持只需创建一对文件，不干扰已有配置
 - 远程引用 URL 达到约 25+ 条，重写更新时需全部拉取
 - 部分 APP 的 `.conf` 和 `.js` 之间有隐含依赖，需保持配对同步
+
+## 关联文档
+
+- [ADR-0012: 重写模块的 MITM 面与阻断动作分级](ADR-0012-rewrite-mitm-scope-and-reject-tiering.md) —— 一对文件确定后，模块内部的 `hostname` 与阻断动作边界由该 ADR 约束
