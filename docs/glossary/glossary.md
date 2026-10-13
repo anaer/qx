@@ -16,7 +16,7 @@
 | **GEOIP** | 基于 IP 归属地数据库的地理位置匹配规则 |
 | **Shawn 资源解析器** | 社区维护的通用资源解析脚本，支持十多种代理格式与 Quantumult X 格式互转，含节点筛选/重命名/增强功能 |
 | **opt-parser** | QX 远程引用参数，开启后使用 resource_parser_url 指定的解析器处理该订阅 |
-| **inserted-resource** | QX 远程引用参数，将解析后的资源插入列表末尾，而非替换 |
+| **inserted-resource** | QX 远程引用参数，语义随段落而异：`[server_remote]` 中为「解析后的节点插入列表末尾而非替换」；`[filter_remote]` 中为「规则前置到本地规则之前」（见 ADR-0013） |
 | **geo_location_checker** | QX 配置项，通过 HTTP API + 响应脚本来检测节点所属地理位置 |
 | **server-tag-regex** | url-latency-benchmark 策略组的节点筛选参数，用正则匹配节点名称来确定归属 |
 | **server_check_url** | 代理延迟测试的目标 URL，用于判断节点可用性和延迟 |
@@ -24,3 +24,5 @@
 | **阻断动作分级 (Reject Tiering)** | 重写规则的阻断取值约定：JSON 接口用 reject-dict，静态资源用 reject，内容类接口不阻断（见 ADR-0012） |
 | **规则遮蔽 (Rule Shadowing)** | 重写规则自上而下首次命中即停止，导致排在后面的同类/具体规则永不生效；泛匹配须排在需要不同动作的具体规则之后（见 ADR-0012） |
 | **单出口 (Single $done)** | 一次脚本执行只允许到达一次 `$done`，出口须互斥；`$done()` 不终止后续代码，守卫后继续执行即缺陷（见 ADR-0013） |
+| **规则类型优先级 (Rule Type Precedence)** | QX 分流规则的匹配层级：HOST > HOST-SUFFIX > HOST-WILDCARD > HOST-KEYWORD > USER-AGENT > IP 类；同层内本地规则先于远程规则，故类型层级高于本地规则的远程规则不受本地规则约束（见 ADR-0013） |
+| **放行层 (Allow Layer)** | 排在广告规则之前、用于修正上游误收录与误杀的一组 DIRECT 规则，须与其要覆盖的规则处于同一类型层且顺序更前，否则放行静默失效（见 ADR-0015） |
